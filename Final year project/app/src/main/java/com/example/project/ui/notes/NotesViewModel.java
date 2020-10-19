@@ -10,7 +10,7 @@ public class NotesViewModel extends ViewModel {
 
     public NotesViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("TYPE HERE");
+        //mText.setValue("TYPE HERE");
     }
 
     public LiveData<String> getText() {

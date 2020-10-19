@@ -4,15 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/notes"
-    android:alpha="0.3"
+    android:background="@drawable/notesbg"
+    android:layout_weight="1"
+    android:weightSum="10"
+    android:orientation="vertical"
     tools:context=".ui.notes.NotesFragment">
 
-    <EditText
-        android:id="@+id/text_notes"
+    <!--    android:background="@drawable/notes"-->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textColor="@android:color/black"
-        android:fontFamily="times"/>
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:weightSum="1">
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:weightSum="1"
+        android:gravity="right"
+        android:layout_marginRight="10dp">
+
+        <Button
+            android:id="@+id/note_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="ADD"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@color/cardview_light_background"
+            android:background="@color/homepagecolor">
+        </Button>
+    </LinearLayout>
 </LinearLayout>

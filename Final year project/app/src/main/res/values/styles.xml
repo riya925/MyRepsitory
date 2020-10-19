@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">#3498DB</item>
-        <item name="colorPrimaryDark">#2980B9</item>
-        <item name="colorAccent">#808080</item>
+        <item name="colorPrimary">#2E86C1</item> <!--on modules selection color-->
+        <item name="colorPrimaryDark">#3498DB</item> <!--app bar-->
+        <item name="colorAccent">#2980B9</item> <!--text box-->
     </style>
 </resources>
