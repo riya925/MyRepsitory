@@ -1,5 +1,6 @@
 package com.example.project;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,6 +41,14 @@ public class SigupTabFragment extends Fragment
         pass.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(600).start();
         phonno.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(800).start();
         btn_submit.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(100).start();
+
+        btn_submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(getContext(),BottomNavigation.class);
+                startActivity(i);
+            }
+        });
 
         return root;
     }

@@ -6,4 +6,9 @@
         <item name="colorPrimaryDark">#3498DB</item> <!--app bar-->
         <item name="colorAccent">#2980B9</item> <!--text box-->
     </style>
+
+    <style name="CustomDialogTheme" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">false</item>
+        <item name="android:background">@android:color/white</item>
+    </style>
 </resources>

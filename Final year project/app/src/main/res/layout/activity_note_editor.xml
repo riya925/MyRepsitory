@@ -4,11 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NoteEditor">
+    android:orientation="vertical"
+    android:weightSum="5"
+    tools:context=".ui.notes.NoteEditor">
 
-    <EditText
+    <TextView
         android:id="@+id/note_et"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Demo"
         android:textSize="20sp"/>
 </LinearLayout>

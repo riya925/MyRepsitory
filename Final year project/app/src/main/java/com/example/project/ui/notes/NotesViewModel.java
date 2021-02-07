@@ -6,14 +6,14 @@ import androidx.lifecycle.ViewModel;
 
 public class NotesViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
+//    private MutableLiveData<String> mText;
 
-    public NotesViewModel() {
-        mText = new MutableLiveData<>();
-        //mText.setValue("TYPE HERE");
-    }
-
-    public LiveData<String> getText() {
-        return mText;
-    }
+//    public NotesViewModel() {
+//        mText = new MutableLiveData<>();
+//        //mText.setValue("TYPE HERE");
+//    }
+//
+//    public LiveData<String> getText() {
+//        return mText;
+//    }
 }
