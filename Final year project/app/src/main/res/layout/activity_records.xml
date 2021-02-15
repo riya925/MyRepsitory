@@ -8,33 +8,50 @@
     android:weightSum="10"
     android:orientation="vertical"
     tools:context=".ui.notes.NotesFragment">
-    <!--    android:background="@drawable/notes"-->
 
-    <ListView
-        android:id="@+id/note_lv"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="8"/>
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_layout"></include>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="7"
+        android:weightSum="1">
+
+        <ListView
+            android:id="@+id/records_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
         android:weightSum="1"
         android:gravity="right"
+        android:orientation="horizontal"
         android:layout_marginRight="10dp">
 
         <Button
-            android:id="@+id/note_add_btn"
-            android:layout_width="50sp"
-            android:layout_height="50sp"
+            android:id="@+id/records_add_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="+"
-            android:textSize="30sp"
+            android:text="ADD"
             android:textStyle="bold"
+            android:textSize="20sp"
             android:textColor="@color/cardview_light_background"
-            android:background="@drawable/roundbutton">
+            android:background="@color/homepagecolor"
+            android:layout_marginEnd="10dp">
+
         </Button>
+
+
+
     </LinearLayout>
+
 
 </LinearLayout>

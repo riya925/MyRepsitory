@@ -34,24 +34,21 @@ import java.util.Map;
 
 public class NotesFragment extends Fragment
 {
-    // initializing the components
     static ListView note_lv;
     Button note_add_btn;
     static ArrayAdapter <String> arrayAdapter;
     private NotesViewModel notesViewModel;
     public static ArrayList<String> notes =null;
-    HashMap<String,String> map;
+    HashMap<String,String> map=new HashMap<>();
 
     EditText et_note_title,et_note_body;
-    Button note_dialog_save_button,note_dialog_cancel_button,note_dialog_delete_button;
-    //complete
+    Button note_dialog_save_button,note_dialog_cancel_button,custom_dialog_save_button,custom_dialog_cancel_button;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState)
     {
         //list of notes
         notes=new ArrayList<>();
-        //complete
         notesViewModel =
                 ViewModelProviders.of(this).get(NotesViewModel.class);
         View root = inflater.inflate(R.layout.fragment_notes, container, false);
@@ -61,22 +58,11 @@ public class NotesFragment extends Fragment
         note_lv=(ListView)root.findViewById(R.id.note_lv);
         note_add_btn=(Button)root.findViewById(R.id.note_add_btn);
 
-        note_lv.setLongClickable(true);
-
-        note_lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(),"delete",Toast.LENGTH_LONG).show();
-                return true;
-            }
-        });
-
         //dialog code
         et_note_title=root.findViewById(R.id.et_note_title);
         et_note_body=root.findViewById(R.id.et_note_body);
         note_dialog_save_button=root.findViewById(R.id.note_dialog_save_button);
         note_dialog_cancel_button=root.findViewById(R.id.note_dialog_cancel_button);
-        //complete
 
 //        notes.add("DEMO");
         arrayAdapter=new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1,notes);
@@ -91,16 +77,7 @@ public class NotesFragment extends Fragment
 //                Intent intent=new Intent(getActivity(),NoteEditor.class);
 //                intent.putExtra("noteId",""+i);
 //                startActivity(intent);
-
-                //for finding the key
-                String strKey="";
-                for(Map.Entry<String,String> entry: map.entrySet()){
-                    if(notes.get(i).equals(entry.getValue())){
-                        strKey = entry.getKey();
-                        break; //breaking because its one to one map
-                    }
-                }
-                openDialog(notes.get(i),strKey,i);
+                openDialog(arrayAdapter.getItem(i),map.get(arrayAdapter.getItem(i)),i);
             }
         });
 
@@ -112,7 +89,6 @@ public class NotesFragment extends Fragment
                 openDialog();
             }
         });
-
         return root;
     }
 
@@ -136,11 +112,10 @@ public class NotesFragment extends Fragment
                 String title=et_note_title.getText().toString();
                 String body=et_note_body.getText().toString();
 
-                map=new HashMap<>();
                 map.put(title,body);
 
                 Toast.makeText(getActivity(),"Note Saved",Toast.LENGTH_LONG).show();
-                arrayAdapter.add(map.get(title));
+                arrayAdapter.add(title);
 
                 dialog.dismiss();
             }
@@ -160,10 +135,9 @@ public class NotesFragment extends Fragment
 //        dialog.setTitle("Modify the Note");
 
         dialog.show();
-        //complete
     }
 
-    private void openDialog(final String description, final String title, final int position) {
+    private void openDialog(final String title, final String description, final int position) {
         final Dialog dialog=new Dialog(getActivity(),R.style.CustomDialogTheme);
         LayoutInflater layoutInflater=this.getLayoutInflater();
         View customDialog=layoutInflater.inflate(R.layout.note_custom_dialog_listview,null);
@@ -174,36 +148,53 @@ public class NotesFragment extends Fragment
         et_note_title.setText(title);
         et_note_body.setText(description);
 
-        note_dialog_save_button=customDialog.findViewById(R.id.note_dialog_save_button);
-        note_dialog_delete_button=customDialog.findViewById(R.id.note_dialog_delete_button);
+        custom_dialog_save_button=customDialog.findViewById(R.id.custom_dialog_save_button);
+        custom_dialog_cancel_button=customDialog.findViewById(R.id.custom_dialog_cancel_button);
 
 
-        note_dialog_save_button.setOnClickListener(new View.OnClickListener() {
+        custom_dialog_save_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                //also title of the dialog is not displayed in the output
-                arrayAdapter.remove(description);
+                //title of the dialog is not displayed in the output
+                arrayAdapter.remove(title);
                 String updatedTitle=et_note_title.getText().toString();
                 String body=et_note_body.getText().toString();
 
-                //not able to update data app closes
-                //not able to update /click on the static notes only for title
-                map.replace(updatedTitle,body);
+                map.put(updatedTitle,body);
                 Toast.makeText(getActivity(),"Note Updated Successfully....",Toast.LENGTH_LONG).show();
-                arrayAdapter.insert(map.get(updatedTitle),position);
+                arrayAdapter.insert(updatedTitle,position);
 
                 dialog.dismiss();
             }
         });
 
-        note_dialog_delete_button.setOnClickListener(new View.OnClickListener() {
+        custom_dialog_cancel_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                arrayAdapter.remove(map.get(title));
-                dialog.dismiss();
+                dialog.cancel();
             }
         });
+
+        note_lv.setLongClickable(true);
+        note_lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                arrayAdapter.remove(title);
+                dialog.dismiss();
+                Toast.makeText(getActivity(),"Note Deleted Successfully....",Toast.LENGTH_LONG).show();
+                return true;
+            }
+        });
+
+//        note_dialog_delete_button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                arrayAdapter.remove(title);
+//                dialog.dismiss();
+//            }
+//        });
 
         //setting the layout for the dialog
         dialog.setContentView(customDialog);
@@ -212,6 +203,5 @@ public class NotesFragment extends Fragment
 //        dialog.setTitle("Modify the Note");
 
         dialog.show();
-        //complete
     }
 }

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:weightSum="3"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="10dp"
+        android:layout_margin="10sp">
+<!--        app:cardBackgroundColor="@color/homepagecolor">-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/parties_img"
+                android:layout_margin="10dp"
+                android:src="@drawable/parties_recycler"
+                android:layout_width="100dp"
+                android:layout_height="120dp">
+
+            </ImageView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/company_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Company Name"
+                    android:textSize="25sp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:id="@+id/company_ceo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="CEO Name"
+                    android:layout_marginTop="10dp"
+                    android:textSize="25sp"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/parties_detail_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/homepagecolor"
+                android:textSize="20sp"
+                android:text="Detail"
+                android:textColor="#FFFFFF"/>
+        </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

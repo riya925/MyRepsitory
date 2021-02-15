@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@color/note_dialog_bg"
+    android:layout_margin="16dp">
+
+    <LinearLayout
+        android:id="@+id/et_layout"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:weightSum="4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@id/et_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:gravity="center">
+
+
+        <Button
+            android:id="@+id/records_dialog_update_button"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:text="UPDATE"
+            android:layout_margin="10dp"
+            android:background="@color/note_dialog_btn"/>
+
+
+        <Button
+            android:id="@+id/records_dialog_delete_button"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:text="DELETE"
+            android:layout_margin="10dp"
+            android:background="@color/note_dialog_btn"/>
+    </LinearLayout>
+
+</RelativeLayout>
